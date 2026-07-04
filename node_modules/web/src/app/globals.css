@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3f5f8;
+  --foreground: #1b2d38;
+  --border: #d8dee4;
+  --muted: #5e707e;
+  --accent: #04a85b;
+  --accent-secondary: #2488d8;
+  --card: #ffffff;
+  --grid: rgba(27, 45, 56, 0.03);
+  
+  --sidebar-bg: #182c37;
+  --sidebar-fg: #ffffff;
+  --sidebar-border: #243b49;
+}
+
+.dark {
+  --background: #0e181e;
+  --foreground: #e5ebf0;
+  --border: #243642;
+  --muted: #8aa0ae;
+  --accent: #05c46b;
+  --accent-secondary: #389df2;
+  --card: #15222b;
+  --grid: rgba(229, 235, 240, 0.03);
+  
+  --sidebar-bg: #091014;
+  --sidebar-fg: #e5ebf0;
+  --sidebar-border: #13222b;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border-custom: var(--border);
+  --color-muted-custom: var(--muted);
+  --color-accent-custom: var(--accent);
+  --color-accent-blue: var(--accent-secondary);
+  --color-card-custom: var(--card);
+  
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-fg: var(--sidebar-fg);
+  --color-sidebar-border: var(--sidebar-border);
+  
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
