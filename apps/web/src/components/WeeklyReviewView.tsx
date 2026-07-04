@@ -93,25 +93,25 @@ export default function WeeklyReviewView() {
       </div>
 
       {/* Hero Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 border border-border-custom divide-x divide-y md:divide-y-0 divide-border-custom bg-card-custom/20">
-        <div className="p-6 text-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-border-custom bg-card-custom/20">
+        <div className="p-6 text-center border-r border-b border-border-custom">
           <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Productivity Score</span>
           <span className="font-serif text-4xl font-light mt-1 block">{productivityScore}%</span>
           <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">
             {productivityScore === 0 ? 'Initialize timeline tasks' : 'Schedule completion rate'}
           </span>
         </div>
-        <div className="p-6 text-center">
+        <div className="p-6 text-center border-r border-b border-border-custom">
           <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Deep Focus Hours</span>
           <span className="font-serif text-4xl font-light mt-1 block">{totalFocusHours}h</span>
           <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">Avg {avgFocusHours}h / day</span>
         </div>
-        <div className="p-6 text-center">
+        <div className="p-6 text-center border-r border-b border-border-custom">
           <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Sleep Alignment</span>
           <span className="font-serif text-4xl font-light mt-1 block">{avgSleep}h</span>
           <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">Avg duration buffer</span>
         </div>
-        <div className="p-6 text-center">
+        <div className="p-6 text-center border-r border-b border-border-custom">
           <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Habit Adherence</span>
           <span className="font-serif text-4xl font-light mt-1 block">{habitCompletionRate}%</span>
           <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">Avg streak: {avgStreak}d</span>

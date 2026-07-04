@@ -34,6 +34,7 @@ export default function Home() {
   } = useStore();
 
   const [activeView, setActiveView] = useState<'schedule' | 'goals' | 'habits' | 'notes' | 'journal' | 'review'>('schedule');
+  const [scheduleTab, setScheduleTab] = useState<'timeline' | 'tasks'>('timeline');
   const [mounted, setMounted] = useState(false);
 
   // Sync theme with HTML class
@@ -88,7 +89,7 @@ export default function Home() {
         </div>
 
         {/* Global Controls & Integration triggers */}
-        <div className="flex items-center space-x-3 w-full md:w-auto justify-end">
+        <div className="flex items-center gap-3 w-full md:w-auto justify-center md:justify-end flex-wrap">
           {/* Overwhelm trigger */}
           <button
             onClick={triggerOverwhelm}
@@ -128,7 +129,7 @@ export default function Home() {
           <div className="flex lg:flex-col w-full justify-around lg:justify-start lg:space-y-1.5 overflow-x-auto lg:overflow-visible">
             <button
               onClick={() => setActiveView('schedule')}
-              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-full rounded-sm transition cursor-pointer ${activeView === 'schedule' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
+              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-auto lg:w-full rounded-sm transition cursor-pointer ${activeView === 'schedule' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
             >
               <Calendar className="w-4 h-4" />
               <span className="hidden lg:inline">Schedule</span>
@@ -136,7 +137,7 @@ export default function Home() {
 
             <button
               onClick={() => setActiveView('goals')}
-              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-full rounded-sm transition cursor-pointer ${activeView === 'goals' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
+              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-auto lg:w-full rounded-sm transition cursor-pointer ${activeView === 'goals' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
             >
               <Target className="w-4 h-4" />
               <span className="hidden lg:inline">Goals</span>
@@ -144,7 +145,7 @@ export default function Home() {
 
             <button
               onClick={() => setActiveView('habits')}
-              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-full rounded-sm transition cursor-pointer ${activeView === 'habits' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
+              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-auto lg:w-full rounded-sm transition cursor-pointer ${activeView === 'habits' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
             >
               <RefreshCw className="w-4 h-4" />
               <span className="hidden lg:inline">Habits</span>
@@ -152,7 +153,7 @@ export default function Home() {
 
             <button
               onClick={() => setActiveView('journal')}
-              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-full rounded-sm transition cursor-pointer ${activeView === 'journal' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
+              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-auto lg:w-full rounded-sm transition cursor-pointer ${activeView === 'journal' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
             >
               <BookOpen className="w-4 h-4" />
               <span className="hidden lg:inline">Journal</span>
@@ -160,7 +161,7 @@ export default function Home() {
 
             <button
               onClick={() => setActiveView('review')}
-              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-full rounded-sm transition cursor-pointer ${activeView === 'review' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
+              className={`flex items-center space-x-2.5 px-3 py-2 text-xs font-mono tracking-wide w-auto lg:w-full rounded-sm transition cursor-pointer ${activeView === 'review' ? 'bg-sidebar-border border-l-2 border-accent-custom text-sidebar-fg font-semibold' : 'text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35'}`}
             >
               <TrendingUp className="w-4 h-4" />
               <span className="hidden lg:inline">Weekly Review</span>
@@ -173,11 +174,36 @@ export default function Home() {
           {activeView === 'schedule' && (
             <div className="flex flex-col h-full overflow-hidden">
               <GoalIntake />
+              
+              {/* Tab Selector for Mobile (hidden on lg) */}
+              <div className="flex lg:hidden border-b border-border-custom bg-background z-10 px-4 py-2 space-x-2">
+                <button
+                  onClick={() => setScheduleTab('timeline')}
+                  className={`flex-1 py-2 text-center font-mono text-xs rounded-sm transition cursor-pointer ${
+                    scheduleTab === 'timeline'
+                      ? 'bg-foreground text-background font-semibold shadow-2xs'
+                      : 'bg-card-custom/40 border border-border-custom text-muted-custom hover:bg-card-custom transition'
+                  }`}
+                >
+                  Chronological Timeline
+                </button>
+                <button
+                  onClick={() => setScheduleTab('tasks')}
+                  className={`flex-1 py-2 text-center font-mono text-xs rounded-sm transition cursor-pointer ${
+                    scheduleTab === 'tasks'
+                      ? 'bg-foreground text-background font-semibold shadow-2xs'
+                      : 'bg-card-custom/40 border border-border-custom text-muted-custom hover:bg-card-custom transition'
+                  }`}
+                >
+                  Checklist Milestones
+                </button>
+              </div>
+
               <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
-                <div className="flex-1 h-full overflow-hidden">
+                <div className={`flex-1 h-full overflow-hidden ${scheduleTab === 'timeline' ? 'block' : 'hidden lg:block'}`}>
                   <Timeline />
                 </div>
-                <div className="w-full lg:w-80 h-full overflow-hidden flex-shrink-0">
+                <div className={`w-full lg:w-80 h-full overflow-hidden flex-shrink-0 ${scheduleTab === 'tasks' ? 'block' : 'hidden lg:block'}`}>
                   <DailyTasksPanel />
                 </div>
               </div>

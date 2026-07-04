@@ -87,9 +87,9 @@ export default function GoalsManager() {
                     {/* Header Clickable Row to Toggle Details */}
                     <div 
                       onClick={() => setExpandedGoalId(isExpanded ? null : g.id)}
-                      className="p-5 flex justify-between items-start cursor-pointer select-none"
+                      className="p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 cursor-pointer select-none"
                     >
-                      <div className="flex-1 min-w-0 pr-4">
+                      <div className="flex-1 min-w-0">
                         <span className="font-mono text-3xs uppercase tracking-widest text-muted-custom">
                           {g.category} horizon // {g.intensity} intensity
                         </span>
@@ -106,7 +106,7 @@ export default function GoalsManager() {
                         )}
                       </div>
                       
-                      <div className="flex items-center space-x-3 flex-shrink-0" onClick={e => e.stopPropagation()}>
+                      <div className="flex items-center justify-between sm:justify-end space-x-3 w-full sm:w-auto flex-shrink-0" onClick={e => e.stopPropagation()}>
                         <div className="font-mono text-2xs text-muted-custom flex items-center space-x-1 bg-card-custom/40 px-2 py-1 border border-border-custom">
                           <Calendar className="w-3.5 h-3.5" />
                           <span>Deadline: {g.targetDate}</span>

@@ -43,7 +43,7 @@ export default function AIAssistant() {
   return (
     <>
       {/* 1. Floating AI Assistant Bubble */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition duration-300 border focus:outline-hidden hover:scale-105 active:scale-95 group ${
@@ -89,7 +89,7 @@ export default function AIAssistant() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 30 }}
               transition={{ type: 'spring', stiffness: 260, damping: 25 }}
-              className="fixed bottom-24 right-6 w-[430px] max-w-[calc(100vw-3rem)] h-[620px] max-h-[calc(100vh-8rem)] z-40 flex flex-col bg-background border border-border-custom shadow-2xl rounded-sm overflow-hidden"
+              className="fixed bottom-20 md:bottom-24 right-4 md:right-6 left-4 md:left-auto w-auto md:w-[430px] h-[calc(100vh-7rem)] md:h-[620px] max-h-[620px] md:max-h-[calc(100vh-8rem)] z-40 flex flex-col bg-background border border-border-custom shadow-2xl rounded-sm overflow-hidden"
             >
               {/* Assistant Header */}
               <div className="p-5 border-b border-border-custom flex items-center justify-between bg-card-custom/20">

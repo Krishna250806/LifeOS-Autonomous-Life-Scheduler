@@ -104,7 +104,7 @@ export default function HabitsManager() {
                   return (
                     <div 
                       key={h.id} 
-                      className="p-5 border border-border-custom bg-card-custom/10 flex flex-col justify-between h-44 shadow-3xs"
+                      className="p-5 border border-border-custom bg-card-custom/10 flex flex-col justify-between min-h-44 shadow-3xs"
                     >
                       <div className="flex justify-between items-start">
                         <div className="min-w-0 flex-1 pr-2">

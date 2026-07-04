@@ -203,7 +203,6 @@ export default function Timeline() {
       <div 
         ref={containerRef}
         className="flex-1 overflow-y-auto relative scroll-smooth"
-        style={{ height: 'calc(100vh - 150px)' }}
       >
         <div 
           className="relative w-full"
