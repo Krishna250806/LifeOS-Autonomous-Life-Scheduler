@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { useStore } from '../store/useStore';
+import { useStore, ScheduleBlock } from '../store/useStore';
 import { Check, X, Zap, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format, parseISO } from 'date-fns';
@@ -21,15 +21,15 @@ interface BlockLayout {
   left: number;
 }
 
-const computeBlockLayouts = (blocksList: any[]) => {
+const computeBlockLayouts = (blocksList: ScheduleBlock[]) => {
   const sorted = [...blocksList].sort((a, b) => timeToMinutes(a.startTime) - timeToMinutes(b.startTime));
   const layouts: Record<string, BlockLayout> = {};
   
-  let activeGroup: any[] = [];
+  let activeGroup: ScheduleBlock[] = [];
   let groupEndMins = 0;
 
-  const layoutGroup = (group: any[]) => {
-    const groupColumns: any[][] = [];
+  const layoutGroup = (group: ScheduleBlock[]) => {
+    const groupColumns: ScheduleBlock[][] = [];
     group.forEach((block) => {
       const startMins = timeToMinutes(block.startTime);
       let placed = false;
