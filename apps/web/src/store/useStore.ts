@@ -58,6 +58,8 @@ export interface Habit {
   frequency: string;
   streak: number;
   skips: number;
+  startTime?: string;
+  duration?: number;
   recommendedAdjustment?: string;
 }
 
