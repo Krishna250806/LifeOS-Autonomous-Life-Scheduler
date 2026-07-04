@@ -35,7 +35,7 @@ export default function WeeklyReviewView() {
     const sleepHours = parseFloat((sleepMins / 60).toFixed(1));
 
     // Tasks completed
-    const tasksDone = dayBlocks.filter(b => b.type === 'task' && b.isCompleted).length;
+    const tasksDone = dayBlocks.filter(b => b.taskId && b.isCompleted).length;
 
     return {
       day: label,
