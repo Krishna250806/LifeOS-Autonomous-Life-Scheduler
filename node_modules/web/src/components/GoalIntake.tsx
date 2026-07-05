@@ -59,7 +59,7 @@ export default function GoalIntake() {
   return (
     <div className="p-6 bg-background border-b border-border-custom z-10">
       <form onSubmit={handleSubmit} className="relative w-full max-w-3xl mx-auto">
-        <div className="relative flex items-center border border-border-custom hover:border-muted-custom bg-card-custom/40 focus-within:border-accent-custom/60 focus-within:ring-0 transition duration-200 rounded-full px-2">
+        <div className="relative flex items-center border border-border-custom hover:border-muted-custom bg-card-custom/40 focus-within:border-accent-custom/60 focus-within:ring-0 transition duration-200 rounded-xl px-2">
           
           {/* Sparkle AI Icon */}
           <div className="pl-4 pr-2 text-muted-custom">
@@ -79,7 +79,7 @@ export default function GoalIntake() {
             <button
               type="button"
               onClick={handleVoiceInput}
-              className={`p-2 rounded-full hover:bg-background transition text-muted-custom ${isListening ? 'text-accent-custom animate-pulse bg-accent-custom/10' : ''}`}
+              className={`p-2 rounded-xl hover:bg-background transition text-muted-custom ${isListening ? 'text-accent-custom animate-pulse bg-accent-custom/10' : ''}`}
               title="Voice Intake (Web Speech API)"
             >
               <Mic className="w-4 h-4" />
@@ -89,7 +89,7 @@ export default function GoalIntake() {
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="p-2 rounded-full border border-border-custom bg-background text-muted-custom hover:text-foreground hover:bg-card-custom transition disabled:opacity-30 disabled:pointer-events-none"
+              className="p-2 rounded-xl border border-border-custom bg-background text-muted-custom hover:text-foreground hover:bg-card-custom transition disabled:opacity-30 disabled:pointer-events-none"
               title="Submit Intent"
             >
               <CornerDownLeft className="w-3.5 h-3.5" />

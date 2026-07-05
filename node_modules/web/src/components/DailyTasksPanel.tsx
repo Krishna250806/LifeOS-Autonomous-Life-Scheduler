@@ -92,8 +92,8 @@ export default function DailyTasksPanel() {
 
       {/* 2. Add Task Form (Pinned at the Top below Header) */}
       <div className="p-4 border-b border-border-custom bg-background z-10">
-        <h4 className="font-serif text-xs font-semibold mb-2 flex items-center space-x-1">
-          <Clock className="w-3.5 h-3.5 text-accent-custom" />
+        <h4 className="font-sans text-xs font-semibold mb-2 flex items-center space-x-1">
+          <Clock className="w-3.5 h-3.5 text-accent-blue" />
           <span>Add Scheduled Milestone</span>
         </h4>
         
@@ -152,7 +152,7 @@ export default function DailyTasksPanel() {
 
           <button
             type="submit"
-            className="w-full py-2.5 bg-foreground text-background font-sans text-xs font-semibold hover:bg-opacity-90 transition flex items-center justify-center space-x-1.5 rounded-xl cursor-pointer"
+            className="w-full py-2.5 bg-accent-blue text-white font-sans text-xs font-semibold hover:bg-[#3F5BE8] active:bg-[#3450D1] transition flex items-center justify-center space-x-1.5 rounded-xl cursor-pointer border-none shadow-sm"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Schedule Task Milestone</span>
@@ -172,8 +172,8 @@ export default function DailyTasksPanel() {
             </div>
             <div className="space-y-1.5">
               {dailyGoals.map(g => (
-                <div key={g.id} className="p-2.5 bg-background border border-border-custom/50 rounded-xl flex flex-col justify-between shadow-3xs">
-                  <span className="font-serif text-xs font-semibold text-foreground">{g.title}</span>
+                <div key={g.id} className="p-2.5 bg-background border border-border-custom/50 rounded-xl flex flex-col justify-between shadow-xs">
+                  <span className="font-sans text-xs font-semibold text-foreground">{g.title}</span>
                   <span className="font-sans text-3xs text-muted-custom mt-0.5">{g.category} horizon • {g.intensity} intensity</span>
                 </div>
               ))}
@@ -188,8 +188,8 @@ export default function DailyTasksPanel() {
           {sortedTasks.length === 0 ? (
             <div className="h-40 flex flex-col items-center justify-center border border-dashed border-border-custom p-6 text-center rounded-2xl">
               <Calendar className="w-5 h-5 text-muted-custom/60 mb-2" />
-              <p className="font-serif text-xs font-medium text-muted-custom">No tasks for this day</p>
-              <p className="font-sans text-3xs text-muted-custom/70 mt-1 uppercase font-semibold">Enter a milestone above</p>
+              <p className="font-sans text-xs font-medium text-muted-custom">Nothing planned yet.</p>
+              <p className="font-sans text-3xs text-muted-custom mt-1 font-semibold uppercase tracking-wider">Enjoy a calm day.</p>
             </div>
           ) : (
             sortedTasks.map((task) => {
@@ -199,17 +199,17 @@ export default function DailyTasksPanel() {
                   key={task.id}
                   className={`p-3.5 border flex items-start justify-between space-x-2 transition duration-200 group rounded-2xl ${
                     isCompleted 
-                      ? 'bg-card-custom/25 border-border-custom/50 text-muted-custom line-through' 
-                      : 'bg-card-custom border-border-custom hover:border-muted-custom shadow-3xs'
+                      ? 'bg-card-custom/25 border-border-custom/50 text-muted-custom line-through opacity-75' 
+                      : 'bg-card-custom border-border-custom hover:border-muted-custom shadow-xs'
                   }`}
                 >
                   <div className="flex items-start space-x-2.5 min-w-0 flex-1">
                     {/* Custom Checkbox */}
                     <button
                       onClick={() => toggleTaskComplete(task.id)}
-                      className={`mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
+                      className={`mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center transition-colors cursor-pointer ${
                         isCompleted 
-                          ? 'bg-accent-custom border-accent-custom text-white' 
+                          ? 'bg-emerald-500 border-emerald-500 text-white' 
                           : 'border-border-custom hover:border-muted-custom bg-background'
                       }`}
                     >
@@ -224,12 +224,12 @@ export default function DailyTasksPanel() {
                           task.priority === 'next' ? 'bg-accent-blue' :
                           task.priority === 'this_week' ? 'bg-amber-500' : 'bg-muted-custom'
                         }`} />
-                        <span className="font-sans text-3xs text-muted-custom font-medium uppercase tracking-wider">
+                        <span className="font-sans text-3xs text-muted-custom font-semibold uppercase tracking-wider">
                           {task.priority === 'this_week' ? 'this week' : task.priority}
                         </span>
                       </div>
 
-                      <p className={`font-serif text-xs font-semibold mt-0.5 leading-snug break-words ${
+                      <p className={`font-sans text-xs font-semibold mt-0.5 leading-snug break-words ${
                         isCompleted ? 'text-muted-custom' : 'text-foreground'
                       }`}>
                         {task.title}
@@ -245,7 +245,7 @@ export default function DailyTasksPanel() {
                   {/* Delete button */}
                   <button
                     onClick={() => deleteTask(task.id)}
-                    className="opacity-0 group-hover:opacity-100 p-1 hover:bg-red-500/10 text-muted-custom hover:text-red-600 rounded-full transition-opacity duration-150"
+                    className="opacity-0 group-hover:opacity-100 p-1.5 hover:bg-red-500/10 text-muted-custom hover:text-red-600 rounded-full transition-opacity duration-150 cursor-pointer"
                     title="Delete Task"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

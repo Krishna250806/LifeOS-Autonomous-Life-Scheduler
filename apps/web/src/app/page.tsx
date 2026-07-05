@@ -58,7 +58,7 @@ export default function Home() {
 
   const getNavButtonClass = (view: 'schedule' | 'goals' | 'habits' | 'notes' | 'journal' | 'review') => {
     const base = "flex items-center justify-center lg:justify-start space-x-2.5 p-2.5 lg:px-3 lg:py-2 text-xs font-sans tracking-wide w-auto lg:w-full transition cursor-pointer";
-    const active = "bg-accent-custom text-white rounded-full lg:bg-sidebar-border lg:text-sidebar-fg lg:border-l-2 lg:border-accent-custom lg:rounded-xl font-semibold";
+    const active = "bg-accent-blue/20 text-accent-blue rounded-full lg:bg-accent-blue/10 lg:text-accent-blue lg:rounded-xl lg:font-medium";
     const inactive = "text-sidebar-fg/60 hover:text-sidebar-fg hover:bg-sidebar-border/35 rounded-full lg:rounded-xl";
     return `${base} ${activeView === view ? active : inactive}`;
   };
@@ -100,7 +100,7 @@ export default function Home() {
           {/* Overwhelm trigger */}
           <button
             onClick={triggerOverwhelm}
-            className="p-2 md:px-3 md:py-1.5 flex items-center gap-1.5 border border-dashed border-red-300 dark:border-red-900 bg-red-500/5 hover:bg-red-500/10 text-red-700 dark:text-red-400 font-sans text-2xs font-semibold transition rounded-full md:rounded-lg"
+            className="p-2 md:px-3 md:py-1.5 flex items-center gap-1.5 border border-dashed border-red-300 dark:border-red-900 bg-red-500/5 hover:bg-red-500/10 text-red-700 dark:text-red-400 font-sans text-2xs font-semibold transition rounded-xl"
             title="Calm Overwhelm mode"
           >
             <ShieldAlert className="w-3.5 h-3.5" />
@@ -110,7 +110,7 @@ export default function Home() {
           {/* Focus Mode button */}
           <button
             onClick={toggleFocusMode}
-            className="p-2 md:px-3 md:py-1.5 flex items-center gap-1.5 border border-accent-blue bg-accent-blue/5 hover:bg-accent-blue/10 text-accent-blue font-sans text-2xs font-semibold transition rounded-full md:rounded-lg"
+            className="p-2 md:px-3 md:py-1.5 flex items-center gap-1.5 border border-accent-blue bg-accent-blue/5 hover:bg-accent-blue/10 text-accent-blue font-sans text-2xs font-semibold transition rounded-xl"
             title="Engage DND Focus block"
           >
             <Focus className="w-3.5 h-3.5" />
@@ -120,7 +120,7 @@ export default function Home() {
           {/* Theme Selector */}
           <button
             onClick={() => setTheme(theme === 'paper' ? 'graphite' : 'paper')}
-            className="p-2 border border-border-custom hover:bg-card-custom transition rounded-full text-muted-custom hover:text-foreground"
+            className="p-2 border border-border-custom hover:bg-card-custom transition rounded-xl text-muted-custom hover:text-foreground"
             title="Toggle theme colorway"
           >
             {theme === 'paper' ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
@@ -180,7 +180,6 @@ export default function Home() {
         <main className="flex-1 overflow-hidden h-full z-10 pb-20 lg:pb-0">
           {activeView === 'schedule' && (
             <div className="flex flex-col h-full overflow-hidden">
-              <GoalIntake />
               
               {/* Tab Selector for Mobile (hidden on lg) */}
               <div className="flex lg:hidden border-b border-border-custom bg-background z-10 px-4 py-2 space-x-2">
@@ -214,6 +213,8 @@ export default function Home() {
                   <DailyTasksPanel />
                 </div>
               </div>
+
+              <GoalIntake />
             </div>
           )}
           {activeView === 'goals' && <GoalsManager />}

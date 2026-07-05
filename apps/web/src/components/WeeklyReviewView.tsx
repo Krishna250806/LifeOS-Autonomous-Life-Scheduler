@@ -84,37 +84,37 @@ export default function WeeklyReviewView() {
       {/* Editorial Header */}
       <div className="border-b border-border-custom pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <span className="font-mono text-2xs uppercase tracking-widest text-muted-custom">RETROSPECTIVE</span>
-          <h1 className="font-serif text-3xl font-light mt-1">Weekly Alignment Review</h1>
+          <span className="font-sans text-3xs font-semibold uppercase tracking-wider text-muted-custom">RETROSPECTIVE</span>
+          <h1 className="font-sans text-2xl font-semibold mt-1">Weekly Alignment Review</h1>
         </div>
-        <div className="font-mono text-xs text-muted-custom">
+        <div className="font-sans text-xs font-semibold text-muted-custom">
           {startOfWeekStr} — {endOfWeekStr}
         </div>
       </div>
 
       {/* Hero Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-border-custom bg-card-custom/20">
-        <div className="p-6 text-center border-r border-b border-border-custom">
-          <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Productivity Score</span>
-          <span className="font-serif text-4xl font-light mt-1 block">{productivityScore}%</span>
-          <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">
+      <div className="grid grid-cols-2 md:grid-cols-4 border border-border-custom bg-card-custom rounded-2xl overflow-hidden shadow-xs">
+        <div className="p-6 text-center border-r border-b md:border-b-0 border-border-custom">
+          <span className="font-sans text-3xs font-semibold uppercase tracking-wider text-muted-custom block">Productivity Score</span>
+          <span className="font-sans text-3xl font-semibold text-accent-blue mt-1.5 block">{productivityScore}%</span>
+          <span className="font-sans text-3xs text-muted-custom font-medium mt-1 block">
             {productivityScore === 0 ? 'Initialize timeline tasks' : 'Schedule completion rate'}
           </span>
         </div>
-        <div className="p-6 text-center border-r border-b border-border-custom">
-          <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Deep Focus Hours</span>
-          <span className="font-serif text-4xl font-light mt-1 block">{totalFocusHours}h</span>
-          <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">Avg {avgFocusHours}h / day</span>
+        <div className="p-6 text-center border-r border-b md:border-b-0 border-border-custom">
+          <span className="font-sans text-3xs font-semibold uppercase tracking-wider text-muted-custom block">Deep Focus Hours</span>
+          <span className="font-sans text-3xl font-semibold text-foreground mt-1.5 block">{totalFocusHours}h</span>
+          <span className="font-sans text-3xs text-muted-custom font-medium mt-1 block">Avg {avgFocusHours}h / day</span>
         </div>
-        <div className="p-6 text-center border-r border-b border-border-custom">
-          <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Sleep Alignment</span>
-          <span className="font-serif text-4xl font-light mt-1 block">{avgSleep}h</span>
-          <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">Avg duration buffer</span>
+        <div className="p-6 text-center border-r border-border-custom">
+          <span className="font-sans text-3xs font-semibold uppercase tracking-wider text-muted-custom block">Sleep Alignment</span>
+          <span className="font-sans text-3xl font-semibold text-foreground mt-1.5 block">{avgSleep}h</span>
+          <span className="font-sans text-3xs text-muted-custom font-medium mt-1 block">Avg duration buffer</span>
         </div>
-        <div className="p-6 text-center border-r border-b border-border-custom">
-          <span className="font-mono text-3xs uppercase tracking-wider text-muted-custom block">Habit Adherence</span>
-          <span className="font-serif text-4xl font-light mt-1 block">{habitCompletionRate}%</span>
-          <span className="font-mono text-xxs text-muted-custom tracking-tight mt-1 block">Avg streak: {avgStreak}d</span>
+        <div className="p-6 text-center">
+          <span className="font-sans text-3xs font-semibold uppercase tracking-wider text-muted-custom block">Habit Adherence</span>
+          <span className="font-sans text-3xl font-semibold text-foreground mt-1.5 block">{habitCompletionRate}%</span>
+          <span className="font-sans text-3xs text-muted-custom font-medium mt-1 block">Avg streak: {avgStreak}d</span>
         </div>
       </div>
 
@@ -122,29 +122,30 @@ export default function WeeklyReviewView() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         {/* Focus Hours Line Chart */}
-        <div className="border border-border-custom p-6 bg-card-custom/10">
-          <span className="font-mono text-2xs uppercase tracking-wider text-muted-custom">Focus Allocation</span>
-          <h3 className="font-serif text-base font-medium mt-1 mb-6">Daily Deep Work Hours</h3>
+        <div className="border border-border-custom p-6 bg-card-custom rounded-2xl shadow-xs">
+          <span className="font-sans text-3xs font-semibold uppercase tracking-wider text-muted-custom">Focus Allocation</span>
+          <h3 className="font-sans text-sm font-semibold mt-1 mb-6">Daily Deep Work Hours</h3>
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData} margin={{ top: 5, right: 5, left: -25, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                <XAxis dataKey="day" tick={{ fontSize: 10, fontFamily: 'var(--font-mono)' }} stroke="var(--muted)" />
-                <YAxis tick={{ fontSize: 10, fontFamily: 'var(--font-mono)' }} stroke="var(--muted)" />
+                <XAxis dataKey="day" tick={{ fontSize: 10, fontFamily: 'var(--font-sans)', fontWeight: 500 }} stroke="var(--muted)" />
+                <YAxis tick={{ fontSize: 10, fontFamily: 'var(--font-sans)', fontWeight: 500 }} stroke="var(--muted)" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'var(--background)', 
+                    backgroundColor: 'var(--card)', 
                     borderColor: 'var(--border)',
-                    fontFamily: 'var(--font-mono)',
+                    fontFamily: 'var(--font-sans)',
                     fontSize: '11px',
+                    borderRadius: '12px',
                   }} 
                 />
                 <Line 
                   type="monotone" 
                   dataKey="focusHours" 
-                  stroke="var(--accent)" 
+                  stroke="var(--accent-secondary)" 
                   strokeWidth={1.5}
-                  dot={{ r: 3, fill: 'var(--accent)' }}
+                  dot={{ r: 3, fill: 'var(--accent-secondary)' }}
                   activeDot={{ r: 5 }}
                 />
               </LineChart>
@@ -153,27 +154,28 @@ export default function WeeklyReviewView() {
         </div>
 
         {/* Sleep Duration Bar Chart */}
-        <div className="border border-border-custom p-6 bg-card-custom/10">
-          <span className="font-mono text-2xs uppercase tracking-wider text-muted-custom">Circadian Patterns</span>
-          <h3 className="font-serif text-base font-medium mt-1 mb-6">Sleep Duration (Hours)</h3>
+        <div className="border border-border-custom p-6 bg-card-custom rounded-2xl shadow-xs">
+          <span className="font-sans text-3xs font-semibold uppercase tracking-wider text-muted-custom">Circadian Patterns</span>
+          <h3 className="font-sans text-sm font-semibold mt-1 mb-6">Sleep Duration (Hours)</h3>
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} margin={{ top: 5, right: 5, left: -25, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                <XAxis dataKey="day" tick={{ fontSize: 10, fontFamily: 'var(--font-mono)' }} stroke="var(--muted)" />
-                <YAxis tick={{ fontSize: 10, fontFamily: 'var(--font-mono)' }} stroke="var(--muted)" />
+                <XAxis dataKey="day" tick={{ fontSize: 10, fontFamily: 'var(--font-sans)', fontWeight: 500 }} stroke="var(--muted)" />
+                <YAxis tick={{ fontSize: 10, fontFamily: 'var(--font-sans)', fontWeight: 500 }} stroke="var(--muted)" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'var(--background)', 
+                    backgroundColor: 'var(--card)', 
                     borderColor: 'var(--border)',
-                    fontFamily: 'var(--font-mono)',
+                    fontFamily: 'var(--font-sans)',
                     fontSize: '11px',
+                    borderRadius: '12px',
                   }} 
                 />
                 <Bar 
                   dataKey="sleep" 
                   fill="var(--accent-secondary)" 
-                  radius={[1, 1, 0, 0]}
+                  radius={[4, 4, 0, 0]}
                   opacity={0.8}
                 />
               </BarChart>
@@ -184,21 +186,21 @@ export default function WeeklyReviewView() {
       </div>
 
       {/* AI Suggestions (Insights) */}
-      <div className="border border-border-custom p-6 bg-card-custom/20 space-y-4">
-        <div className="flex items-center space-x-2 text-accent-custom">
+      <div className="border border-border-custom p-6 bg-card-custom rounded-2xl space-y-4 shadow-xs">
+        <div className="flex items-center space-x-2 text-accent-blue font-medium">
           <Sparkles className="w-4 h-4" />
-          <span className="font-mono text-2xs uppercase tracking-widest font-semibold">AI Generated Suggestions</span>
+          <span className="font-sans text-3xs font-semibold text-muted-custom uppercase tracking-wider">AI Generated Suggestions</span>
         </div>
         
-        <div className="space-y-4 font-sans text-sm font-light leading-relaxed">
+        <div className="space-y-4 font-sans text-sm leading-relaxed">
           {productivityScore === 0 ? (
-            <div className="py-2 text-muted-custom text-xs font-mono">
+            <div className="py-2 text-muted-custom text-xs">
               Proposing startup actions: Add task deadlines on Goals page, configure recurring rituals on Habits, and tick them complete on your Schedule timeline to trigger scheduling recommendations and diagnostic graphs.
             </div>
           ) : (
             <>
               <div className="border-l-2 border-accent-custom pl-4">
-                <p className="font-medium text-foreground">
+                <p className="font-semibold text-foreground">
                   {avgFocusHours < 2.0 ? 'Establish Focus Blocks' : 'Focus Levels Optimal'}
                 </p>
                 <p className="text-muted-custom text-xs mt-1">
@@ -210,7 +212,7 @@ export default function WeeklyReviewView() {
               </div>
 
               <div className="border-l-2 border-accent-blue pl-4">
-                <p className="font-medium text-foreground">
+                <p className="font-semibold text-foreground">
                   {avgSleep < 7.0 ? 'Circadian Restoration Alert' : 'Healthy Circadian Rhythm'}
                 </p>
                 <p className="text-muted-custom text-xs mt-1">

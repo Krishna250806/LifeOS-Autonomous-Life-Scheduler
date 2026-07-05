@@ -315,7 +315,7 @@ export default function Timeline() {
                         
                         {!isExpanded && <span className="text-muted-custom/40 flex-shrink-0 text-3xs">•</span>}
 
-                        <h3 className={`font-serif text-xs font-semibold text-foreground min-w-0 ${
+                        <h3 className={`font-sans text-xs font-semibold text-foreground min-w-0 ${
                           isExpanded ? 'whitespace-normal break-words w-full' : 'truncate flex-1'
                         }`}>
                           {block.title}
@@ -340,20 +340,20 @@ export default function Timeline() {
                       {!block.isCompleted && !block.isSkipped && !isDeferred && block.type !== 'sleep' && (
                         <div 
                           onClick={(e) => e.stopPropagation()} // Prevent collapse toggling when clicking action button
-                          className={`flex items-center space-x-1 bg-background/90 dark:bg-card-custom p-0.5 rounded-full border border-border-custom transition-opacity duration-150 flex-shrink-0 z-20 ${
-                            isExpanded ? 'self-end' : 'opacity-0 group-hover:opacity-100 pl-2'
+                          className={`flex items-center space-x-1 bg-background/90 dark:bg-card-custom p-0.5 rounded-xl border border-border-custom transition-opacity duration-150 flex-shrink-0 z-20 ${
+                            isExpanded ? 'self-end' : 'opacity-0 group-hover:opacity-100 px-1.5'
                           }`}
                         >
                           <button
                             onClick={() => completeBlock(block.id)}
-                            className="p-1 hover:bg-emerald-500/10 text-emerald-600 rounded-full"
+                            className="p-1.5 hover:bg-emerald-500/10 text-emerald-600 rounded-xl cursor-pointer"
                             title="Complete Block"
                           >
                             <Check className="w-3.5 h-3.5" />
                           </button>
                           <button
                             onClick={() => skipBlock(block.id)}
-                            className="p-1 hover:bg-red-500/10 text-red-600 rounded-full"
+                            className="p-1.5 hover:bg-red-500/10 text-red-600 rounded-xl cursor-pointer"
                             title="Skip / Reschedule"
                           >
                             <X className="w-3.5 h-3.5" />
@@ -395,7 +395,7 @@ export default function Timeline() {
                           {block.startTime} – {block.endTime} [PROPOSED NEW]
                         </span>
                       </div>
-                      <h3 className="font-serif text-sm font-semibold mt-0.5 leading-snug">
+                      <h3 className="font-sans text-sm font-semibold mt-0.5 leading-snug">
                         {block.title}
                       </h3>
                       {block.rationale && (
