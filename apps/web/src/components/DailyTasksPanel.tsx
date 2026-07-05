@@ -68,14 +68,14 @@ export default function DailyTasksPanel() {
       <div className="p-4 border-b border-border-custom flex items-center justify-between bg-background z-10">
         <button 
           onClick={handlePrevDay}
-          className="p-1 hover:bg-card-custom border border-transparent hover:border-border-custom rounded-sm transition text-muted-custom hover:text-foreground"
+          className="p-1.5 hover:bg-card-custom border border-transparent hover:border-border-custom rounded-full transition text-muted-custom hover:text-foreground"
           title="Previous Day"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
         
         <div className="flex flex-col items-center">
-          <span className="font-mono text-3xs uppercase tracking-widest text-muted-custom">Task Ledger</span>
+          <span className="font-sans text-3xs uppercase tracking-wider text-muted-custom font-semibold">Ledger</span>
           <span className="font-serif text-sm font-semibold mt-0.5">
             {format(parsedDate, 'EEEE, MMM d')}
           </span>
@@ -83,7 +83,7 @@ export default function DailyTasksPanel() {
 
         <button 
           onClick={handleNextDay}
-          className="p-1 hover:bg-card-custom border border-transparent hover:border-border-custom rounded-sm transition text-muted-custom hover:text-foreground"
+          className="p-1.5 hover:bg-card-custom border border-transparent hover:border-border-custom rounded-full transition text-muted-custom hover:text-foreground"
           title="Next Day"
         >
           <ChevronRight className="w-4 h-4" />
@@ -105,17 +105,17 @@ export default function DailyTasksPanel() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Task title (e.g. Code auth router)"
-              className="w-full p-2 border border-border-custom bg-card-custom/40 focus:outline-hidden focus:border-accent-custom/50 text-xs font-sans placeholder-muted-custom"
+              className="w-full p-2.5 border border-border-custom bg-card-custom/40 focus:outline-hidden focus:border-accent-custom/50 text-xs font-sans placeholder-muted-custom rounded-xl"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-1">
-              <label className="font-mono text-3xs text-muted-custom uppercase">Priority</label>
+              <label className="font-sans text-3xs text-muted-custom uppercase font-semibold">Priority</label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as Task['priority'])}
-                className="w-full p-1.5 border border-border-custom bg-background focus:outline-hidden text-xs"
+                className="w-full p-2 border border-border-custom bg-background focus:outline-hidden text-xs rounded-xl"
               >
                 <option value="now">Now (High)</option>
                 <option value="next">Next (Medium)</option>
@@ -125,7 +125,7 @@ export default function DailyTasksPanel() {
             </div>
 
             <div className="space-y-1">
-              <label className="font-mono text-3xs text-muted-custom uppercase">Est. Mins</label>
+              <label className="font-sans text-3xs text-muted-custom uppercase font-semibold">Est. Mins</label>
               <input
                 type="number"
                 min="5"
@@ -133,26 +133,26 @@ export default function DailyTasksPanel() {
                 required
                 value={estimatedMinutes}
                 onChange={(e) => setEstimatedMinutes(Math.max(5, parseInt(e.target.value, 10) || 5))}
-                className="w-full p-1.5 border border-border-custom bg-background focus:outline-hidden text-xs font-mono"
+                className="w-full p-2 border border-border-custom bg-background focus:outline-hidden text-xs rounded-xl"
               />
             </div>
           </div>
 
           {/* Time Selector (Compulsory) */}
           <div className="space-y-1">
-            <label className="font-mono text-3xs text-accent-custom uppercase font-semibold">Start Time (Required)</label>
+            <label className="font-sans text-3xs text-accent-custom uppercase font-semibold">Start Time</label>
             <input
               type="time"
               required
               value={scheduledTime}
               onChange={(e) => setScheduledTime(e.target.value)}
-              className="w-full p-1.5 border border-accent-custom/45 focus:border-accent-custom bg-background focus:outline-hidden text-xs font-mono"
+              className="w-full p-2 border border-accent-custom/45 focus:border-accent-custom bg-background focus:outline-hidden text-xs rounded-xl"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-2 bg-foreground text-background font-mono text-xxs hover:bg-opacity-95 transition flex items-center justify-center space-x-1.5"
+            className="w-full py-2.5 bg-foreground text-background font-sans text-xs font-semibold hover:bg-opacity-90 transition flex items-center justify-center space-x-1.5 rounded-xl cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Schedule Task Milestone</span>
@@ -168,13 +168,13 @@ export default function DailyTasksPanel() {
           <div className="p-4 bg-accent-custom/5 border-b border-border-custom/50 space-y-2">
             <div className="flex items-center space-x-1.5 text-accent-custom">
               <Target className="w-3.5 h-3.5" />
-              <span className="font-mono text-3xs uppercase tracking-widest font-semibold">Target Deadlines Today</span>
+              <span className="font-sans text-3xs uppercase tracking-wider font-semibold">Target Deadlines Today</span>
             </div>
             <div className="space-y-1.5">
               {dailyGoals.map(g => (
-                <div key={g.id} className="p-2 bg-background border border-border-custom/50 rounded-xs flex flex-col justify-between shadow-3xs">
+                <div key={g.id} className="p-2.5 bg-background border border-border-custom/50 rounded-xl flex flex-col justify-between shadow-3xs">
                   <span className="font-serif text-xs font-semibold text-foreground">{g.title}</span>
-                  <span className="font-mono text-4xs text-muted-custom uppercase mt-0.5">{g.category} horizon • {g.intensity} intensity</span>
+                  <span className="font-sans text-3xs text-muted-custom mt-0.5">{g.category} horizon • {g.intensity} intensity</span>
                 </div>
               ))}
             </div>
@@ -183,13 +183,13 @@ export default function DailyTasksPanel() {
 
         {/* Task Checklist List */}
         <div className="p-4 space-y-3">
-          <span className="font-mono text-3xs uppercase tracking-widest text-muted-custom block mb-1">Checklist Milestones</span>
+          <span className="font-sans text-3xs uppercase tracking-wider font-semibold text-muted-custom block mb-1">Tasks</span>
           
           {sortedTasks.length === 0 ? (
-            <div className="h-40 flex flex-col items-center justify-center border border-dashed border-border-custom p-6 text-center">
+            <div className="h-40 flex flex-col items-center justify-center border border-dashed border-border-custom p-6 text-center rounded-2xl">
               <Calendar className="w-5 h-5 text-muted-custom/60 mb-2" />
               <p className="font-serif text-xs font-medium text-muted-custom">No tasks for this day</p>
-              <p className="font-mono text-3xs text-muted-custom/70 mt-1 uppercase">Enter a milestone above</p>
+              <p className="font-sans text-3xs text-muted-custom/70 mt-1 uppercase font-semibold">Enter a milestone above</p>
             </div>
           ) : (
             sortedTasks.map((task) => {
@@ -197,7 +197,7 @@ export default function DailyTasksPanel() {
               return (
                 <div 
                   key={task.id}
-                  className={`p-3 border flex items-start justify-between space-x-2 transition duration-200 group rounded-xs ${
+                  className={`p-3.5 border flex items-start justify-between space-x-2 transition duration-200 group rounded-2xl ${
                     isCompleted 
                       ? 'bg-card-custom/25 border-border-custom/50 text-muted-custom line-through' 
                       : 'bg-card-custom border-border-custom hover:border-muted-custom shadow-3xs'
@@ -207,7 +207,7 @@ export default function DailyTasksPanel() {
                     {/* Custom Checkbox */}
                     <button
                       onClick={() => toggleTaskComplete(task.id)}
-                      className={`mt-0.5 w-4 h-4 rounded-xs border flex items-center justify-center transition-colors ${
+                      className={`mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
                         isCompleted 
                           ? 'bg-accent-custom border-accent-custom text-white' 
                           : 'border-border-custom hover:border-muted-custom bg-background'
@@ -224,7 +224,7 @@ export default function DailyTasksPanel() {
                           task.priority === 'next' ? 'bg-accent-blue' :
                           task.priority === 'this_week' ? 'bg-amber-500' : 'bg-muted-custom'
                         }`} />
-                        <span className="font-mono text-3xs text-muted-custom uppercase tracking-wider">
+                        <span className="font-sans text-3xs text-muted-custom font-medium uppercase tracking-wider">
                           {task.priority === 'this_week' ? 'this week' : task.priority}
                         </span>
                       </div>
@@ -235,7 +235,7 @@ export default function DailyTasksPanel() {
                         {task.title}
                       </p>
 
-                      <div className="flex items-center space-x-1.5 mt-1 font-mono text-3xs text-muted-custom">
+                      <div className="flex items-center space-x-1.5 mt-1 font-sans text-3xs text-muted-custom">
                         <Clock className="w-3 h-3 text-muted-custom/75" />
                         <span>{task.estimatedMinutes} mins</span>
                       </div>
@@ -245,7 +245,7 @@ export default function DailyTasksPanel() {
                   {/* Delete button */}
                   <button
                     onClick={() => deleteTask(task.id)}
-                    className="opacity-0 group-hover:opacity-100 p-1 hover:bg-red-500/10 text-muted-custom hover:text-red-600 rounded-xs transition-opacity duration-150"
+                    className="opacity-0 group-hover:opacity-100 p-1 hover:bg-red-500/10 text-muted-custom hover:text-red-600 rounded-full transition-opacity duration-150"
                     title="Delete Task"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

@@ -232,7 +232,7 @@ export default function Timeline() {
               style={{ top: nowOffset }}
             >
               <div className="w-16 pr-3 text-right">
-                <span className="font-mono text-2xs font-semibold text-accent-custom tracking-tighter bg-background px-1 border border-accent-custom rounded-sm">
+                <span className="font-sans text-3xs font-bold text-accent-custom bg-background px-2 py-0.5 border border-accent-custom rounded-full">
                   NOW
                 </span>
               </div>
@@ -266,7 +266,7 @@ export default function Timeline() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                     onClick={() => setExpandedBlockId(isExpanded ? null : block.id)}
-                    className={`absolute p-3 border rounded-sm flex flex-col justify-between pointer-events-auto group cursor-pointer transition-shadow duration-150 ${
+                    className={`absolute p-3 border rounded-xl flex flex-col justify-between pointer-events-auto group cursor-pointer transition-shadow duration-150 ${
                       isExpanded ? 'z-30 shadow-md border-muted-custom bg-card-custom' : 'z-10'
                     } ${
                       block.isCompleted 
@@ -336,25 +336,24 @@ export default function Timeline() {
                           )
                         )}
                       </div>
-                      
-                      {/* Checkbox controls for actions */}
+                                       {/* Checkbox controls for actions */}
                       {!block.isCompleted && !block.isSkipped && !isDeferred && block.type !== 'sleep' && (
                         <div 
                           onClick={(e) => e.stopPropagation()} // Prevent collapse toggling when clicking action button
-                          className={`flex items-center space-x-1 bg-background/90 dark:bg-card-custom p-0.5 rounded-sm border border-border-custom transition-opacity duration-150 flex-shrink-0 z-20 ${
+                          className={`flex items-center space-x-1 bg-background/90 dark:bg-card-custom p-0.5 rounded-full border border-border-custom transition-opacity duration-150 flex-shrink-0 z-20 ${
                             isExpanded ? 'self-end' : 'opacity-0 group-hover:opacity-100 pl-2'
                           }`}
                         >
                           <button
                             onClick={() => completeBlock(block.id)}
-                            className="p-1 hover:bg-emerald-500/10 text-emerald-600 rounded-sm"
+                            className="p-1 hover:bg-emerald-500/10 text-emerald-600 rounded-full"
                             title="Complete Block"
                           >
                             <Check className="w-3.5 h-3.5" />
                           </button>
                           <button
                             onClick={() => skipBlock(block.id)}
-                            className="p-1 hover:bg-red-500/10 text-red-600 rounded-sm"
+                            className="p-1 hover:bg-red-500/10 text-red-600 rounded-full"
                             title="Skip / Reschedule"
                           >
                             <X className="w-3.5 h-3.5" />
@@ -366,21 +365,21 @@ export default function Timeline() {
                 );
               })}
             </AnimatePresence>
-
+ 
             {/* Render Proposed ADDED Blocks */}
             <AnimatePresence>
               {proposedAddedBlocks.map((block) => {
                 const startMins = timeToMinutes(block.startTime);
                 const top = startMins * MINUTE_HEIGHT;
                 const height = block.duration * MINUTE_HEIGHT;
-
+ 
                 return (
                   <motion.div
                     key={`prop-add-${block.id}`}
                     initial={{ opacity: 0, scale: 0.95, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="absolute p-3 bg-emerald-500/10 border-2 border-emerald-500 text-emerald-900 dark:text-emerald-200 dark:bg-emerald-950/20 rounded-sm flex flex-col justify-between"
+                    className="absolute p-3 bg-emerald-500/10 border-2 border-emerald-500 text-emerald-900 dark:text-emerald-200 dark:bg-emerald-950/20 rounded-xl flex flex-col justify-between"
                     style={{ 
                       top, 
                       height: Math.max(height - 4, 30),

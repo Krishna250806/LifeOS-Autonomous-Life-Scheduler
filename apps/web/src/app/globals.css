@@ -1,33 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3f5f8;
-  --foreground: #1b2d38;
-  --border: #d8dee4;
-  --muted: #5e707e;
-  --accent: #04a85b;
-  --accent-secondary: #2488d8;
-  --card: #ffffff;
-  --grid: rgba(27, 45, 56, 0.03);
+  --background: #FAF9F7;
+  --foreground: #222222;
+  --border: #ECECEC;
+  --muted: #6F7280;
+  --accent: #FF8A7A;
+  --accent-secondary: #4F6EF7;
+  --secondary: #E9ECFF;
+  --success: #7CBF8E;
+  --card: #FFFFFF;
+  --grid: rgba(34, 34, 34, 0.02);
   
-  --sidebar-bg: #182c37;
-  --sidebar-fg: #ffffff;
-  --sidebar-border: #243b49;
+  --sidebar-bg: #E9ECFF;
+  --sidebar-fg: #222222;
+  --sidebar-border: #FFFFFF;
 }
 
 .dark {
-  --background: #0e181e;
-  --foreground: #e5ebf0;
-  --border: #243642;
-  --muted: #8aa0ae;
-  --accent: #05c46b;
-  --accent-secondary: #389df2;
-  --card: #15222b;
-  --grid: rgba(229, 235, 240, 0.03);
+  --background: #12141c;
+  --foreground: #e1e3eb;
+  --border: #242630;
+  --muted: #8b8f9e;
+  --accent: #FF8A7A;
+  --accent-secondary: #6d88ff;
+  --secondary: #26293c;
+  --success: #8dcca0;
+  --card: #1a1d29;
+  --grid: rgba(225, 227, 235, 0.02);
   
-  --sidebar-bg: #091014;
-  --sidebar-fg: #e5ebf0;
-  --sidebar-border: #13222b;
+  --sidebar-bg: #0d0f15;
+  --sidebar-fg: #e1e3eb;
+  --sidebar-border: #1a1d29;
 }
 
 @theme {
@@ -38,13 +42,17 @@
   --color-accent-custom: var(--accent);
   --color-accent-blue: var(--accent-secondary);
   --color-card-custom: var(--card);
+  --color-secondary-custom: var(--secondary);
   
   --color-sidebar-bg: var(--sidebar-bg);
   --color-sidebar-fg: var(--sidebar-fg);
   --color-sidebar-border: var(--sidebar-border);
   
+  --color-emerald-500: var(--success);
+  --color-emerald-600: var(--success);
+  
   --font-serif: var(--font-serif);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
 }
 
